@@ -12,13 +12,13 @@ import com.balbinaraquel.dslist.entities.Game;
 import com.balbinaraquel.dslist.projections.GameMinProjection;
 import com.balbinaraquel.dslist.repositories.GameRepository;  
 
-@Service  //Component dependency injection (service) into the system
+@Service  
 public class GameService {
 
-	@Autowired //To inject a Game Repository instance into the Game Service
+	@Autowired 
 	private GameRepository  gameRepository;
 	
-	@Transactional(readOnly = true) //to ensure that it will not perform a write operation to not block the database for writing
+	@Transactional(readOnly = true)  
 	public GameDTO findById(Long id) {
 		Game result = gameRepository.findById(id).get();
 		return new GameDTO(result);
